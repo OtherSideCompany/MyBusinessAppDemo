@@ -1,0 +1,26 @@
+@using Accounts.Contracts
+@using MudBlazor
+@using BusinessAppFramework.Application.Interfaces
+@using BusinessAppFramework.Domain
+@using Search.Contracts.SearchResults
+@using BusinessAppFramework.WebUI.Components.SearchList
+
+@implements ISearchListTemplateProvider<ContactSearchResult>
+
+@inject ILocalizedStringService LocalizedStringService
+
+@code {
+    public SearchListTemplate<ContactSearchResult> Template => new()
+    {
+        DataGridColumns = @<text>
+            <PropertyColumn T="ContactSearchResult" TProperty="string" Property="x => x.Name" Title="@LocalizedStringService.Get(AccountsContracts.Contact_Name)" />
+            <PropertyColumn T="ContactSearchResult" TProperty="string" Property="x => x.ParentName ?? GlobalVariables.DefaultString" Title="@LocalizedStringService.Get(AccountsContracts.Contact_ParentName)" />
+            <PropertyColumn T="ContactSearchResult" TProperty="bool" Property="x => x.IsActive" Title="@LocalizedStringService.Get(AccountsContracts.BusinessPartner_ClientNumber)">
+                <CellTemplate>
+                        <BoolIndicator Value="context.Item.IsActive" />
+                </CellTemplate>
+            </PropertyColumn>
+
+        </text>
+    };
+}

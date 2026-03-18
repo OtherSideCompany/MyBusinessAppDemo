@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Accounts.Desktop.Workspaces.BusinessPartner.BusinessPartnerEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Accounts.Desktop.Workspaces.BusinessPartner"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:editor="clr-namespace:OtherSideCore.Wpf.UserControls.Editor;assembly=OtherSideCore.Wpf" 
+             xmlns:searchlists="clr-namespace:BaseData.Desktop.SearchLists;assembly=BaseData.Desktop" 
+             xmlns:basedata_editor="clr-namespace:BaseData.Desktop.Editor;assembly=BaseData.Desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="0" 
+                                            InfoPanelCategory_HeaderName="Infos"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True"
+                                            IsEnabled="{Binding IsEnabled}">
+
+         <editor:DomainObjectEditorPropertiesEdition />
+
+      </osc_customcontrols:InfoPanelCategory>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="1" Margin="0,8,0,0"
+                                            InfoPanelCategory_HeaderName="Catégories"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True">
+
+         <ItemsControl ItemsSource="{Binding BusinessPartnerTypeMultiSelectListViewModel.Items}">
+            <ItemsControl.ItemsPanel>
+               <ItemsPanelTemplate>
+                  <WrapPanel Orientation="Horizontal" />
+               </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+               <DataTemplate>
+                  <osc_customcontrols:TextToggleButton Height="32" Margin="0,0,8,0"
+                                                       Content="{Binding Name}" 
+                                                       HorizontalAlignment="Left"
+                                                       IsChecked="{Binding IsSelected}" />
+               </DataTemplate>
+            </ItemsControl.ItemTemplate>
+         </ItemsControl>
+
+      </osc_customcontrols:InfoPanelCategory>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="2" Margin="0,8,0,0"
+                                            InfoPanelCategory_HeaderName="Adresses"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True">
+
+         <basedata_editor:AdressListEditor DataContext="{Binding AdressTreeViewModel}"/>
+
+      </osc_customcontrols:InfoPanelCategory>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="3" Margin="0,8,0,0"
+                                            InfoPanelCategory_HeaderName="Contacts"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True">
+
+         <local:ContactListEditor DataContext="{Binding ContactTreeViewModel}"/>
+
+      </osc_customcontrols:InfoPanelCategory>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="4" Margin="0,8,0,0"
+                                            InfoPanelCategory_HeaderName="Notes"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True">
+
+         <basedata_editor:NoteListEditor DataContext="{Binding NoteTreeViewModel}" />
+
+      </osc_customcontrols:InfoPanelCategory>
+
+      <osc_customcontrols:InfoPanelCategory Grid.Row="5" Margin="0,8,0,0"
+                                            InfoPanelCategory_HeaderName="Historique"
+                                            InfoPanelCategory_IsExpanded="True"
+                                            InfoPanelCategory_DisplaySeparator="True">
+
+         <editor:DomainObjectHistoryView DataContext="{Binding DomainObjectViewModel}" />
+
+      </osc_customcontrols:InfoPanelCategory>
+
+   </Grid>
+
+</UserControl>

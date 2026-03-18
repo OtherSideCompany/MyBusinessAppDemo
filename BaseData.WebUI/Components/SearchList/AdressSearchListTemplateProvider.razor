@@ -1,0 +1,26 @@
+@using Accounts.Contracts
+@using BaseData.Contracts
+@using BaseData.Domain.DomainObjects
+@using MudBlazor
+@using BusinessAppFramework.Application.Interfaces
+@using WebUI.Components.SearchList
+@using Search.Contracts.SearchResults
+@using BusinessAppFramework.WebUI.Components.SearchList
+
+@implements ISearchListTemplateProvider<AdressSearchResult>
+
+@inject ILocalizedStringService LocalizedStringService
+
+@code {
+    public SearchListTemplate<AdressSearchResult> Template => new()
+    {
+        DataGridColumns = @<text>
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.ParentName" Title="@LocalizedStringService.Get(AccountsContracts.BusinessPartner_Name)" />
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.Label" Title="@LocalizedStringService.Get(BaseDataContracts.Adress_Label)" />
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.AdressDescription" Title="@LocalizedStringService.Get(BaseDataContracts.Adress_AdressDescription)" />
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.City" Title="@LocalizedStringService.Get(BaseDataContracts.PostalCode_City)" />
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.PostalCode" Title="@LocalizedStringService.Get(BaseDataContracts.Adress_PostalCodeReference)" />
+            <PropertyColumn T="AdressSearchResult" TProperty="string" Property="x => x.CountryAlpha2Code" Title="@LocalizedStringService.Get(BaseDataContracts.Country_Alpha2Code)" />
+        </text>
+    };
+}

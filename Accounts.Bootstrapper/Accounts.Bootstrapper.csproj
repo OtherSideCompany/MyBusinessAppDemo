@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Adapter\BusinessAppFramework.Adapter.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Application\BusinessAppFramework.Application.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Bootstrapper\BusinessAppFramework.Bootstrapper.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Contracts\BusinessAppFramework.Contracts.csproj" />
+    <ProjectReference Include="..\Accounts.Adapter\Accounts.Adapter.csproj" />
+    <ProjectReference Include="..\Accounts.Infrastructure\Accounts.Infrastructure.csproj" />
+    <ProjectReference Include="..\Accounts.WebUI\Accounts.WebUI.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+   <SolidColorBrush Color="#FF957b5f" x:Key="Brown" />
+   <SolidColorBrush Color="#FF7b6042" x:Key="Brown_Dark" />
+   <SolidColorBrush Color="#FFaf8b65" x:Key="Brown_Light" />
+
+   <SolidColorBrush Color="#FF27aba6" x:Key="LightLightGreen"/>
+   <SolidColorBrush Color="#FF27aba6" x:Key="LightLightGreen_Transparent_05" Opacity="0.5"/>
+   <SolidColorBrush Color="#FF27aba6" x:Key="LightLightGreen_Transparent" Opacity="0.3"/>
+   <SolidColorBrush Color="#FF27aba6" x:Key="LightLightGreen_Transparent_01" Opacity="0.1"/>
+   <SolidColorBrush Color="#FF21918e" x:Key="LightGreen"/>
+   <SolidColorBrush Color="#FF5f7d76" x:Key="Green"/>
+   <SolidColorBrush Color="#FF44514e" x:Key="Green_Dark"/>
+   <SolidColorBrush Color="#FF729c92" x:Key="Green_SemiLight"/>
+   <SolidColorBrush Color="#FFc8ddd8" x:Key="Green_Light"/>
+   <SolidColorBrush Color="#FFd8f0ea" x:Key="Green_LightLight"/>
+   <SolidColorBrush Color="#FFd8f0ea" x:Key="Green_LightLight_Transparent" Opacity="0.3"/>
+   <SolidColorBrush Color="#FFffea00" x:Key="Yellow_Transparent" Opacity="0.1"/>
+
+   <SolidColorBrush Color="#FF016CCC" x:Key="BusinessPartner" />
+   <SolidColorBrush Color="#FF0187FF" x:Key="BusinessPartner_Light" />
+   <SolidColorBrush Color="#FF003666" x:Key="BusinessPartner_dark" />
+
+   <SolidColorBrush Color="#FF9CCC57" x:Key="Contact" />
+   <SolidColorBrush Color="#FFC3FF6D" x:Key="Contact_Light" />
+   <SolidColorBrush Color="#FF587331" x:Key="Contact_dark" />
+
+   <SolidColorBrush Color="#FF22313f" x:Key="Project" />
+   <SolidColorBrush Color="#FF67809f" x:Key="Project_Light" />
+   <SolidColorBrush Color="#FF18222c" x:Key="Project_dark" />
+
+   <SolidColorBrush Color="#FF913d88" x:Key="ClientOrder" />
+   <SolidColorBrush Color="#FFbe90d4" x:Key="ClientOrder_Light" />
+   <SolidColorBrush Color="#FF682c62" x:Key="ClientOrder_Dark" />
+
+   <SolidColorBrush Color="#FF613d91" x:Key="Provider_Order" />
+   <SolidColorBrush Color="#FFb290d4" x:Key="Provider_Order_Light" />
+   <SolidColorBrush Color="#FF522c68" x:Key="Provider_Order_Dark" />
+
+   <SolidColorBrush Color="#FF784315" x:Key="Provider_Order_Delivery" />
+   <SolidColorBrush Color="#FFC97023" x:Key="Provider_Order_Delivery_Light" />
+   <SolidColorBrush Color="#FF381F0A" x:Key="Provider_Order_Delivery_Dark" />
+
+   <SolidColorBrush Color="#FFd70326" x:Key="Provider_Quote" />
+   <SolidColorBrush Color="#FFfe3758" x:Key="Provider_Quote_Light" />
+   <SolidColorBrush Color="#FF7b0014" x:Key="Provider_Quote_Dark" />
+
+   <SolidColorBrush Color="#FF00bf51" x:Key="Opportunity" />
+   <SolidColorBrush Color="#FF41ee8a" x:Key="Opportunity_Light" />
+   <SolidColorBrush Color="#FF009640" x:Key="Opportunity_Dark" />
+
+   <SolidColorBrush Color="#FF00c8ec" x:Key="ClientOffer" />
+   <SolidColorBrush Color="#FF7bebff" x:Key="ClientOffer_Light" />
+   <SolidColorBrush Color="#FF22b1cb" x:Key="ClientOffer_Dark" />
+
+   <SolidColorBrush Color="#FFd35400" x:Key="ProductionOrder" />
+   <SolidColorBrush Color="#FFe67e23" x:Key="ProductionOrder_Light" />
+
+   <SolidColorBrush Color="#FF00bd35" x:Key="Dispatch" />
+   <SolidColorBrush Color="#FF56ed81" x:Key="Dispatch_Light" />
+   <SolidColorBrush Color="#FF008425" x:Key="Dispatch_Dark" />
+
+   <SolidColorBrush Color="#FF6775ff" x:Key="Goods" />
+   <SolidColorBrush Color="#FF9ba4ff" x:Key="Goods_Light" />
+   <SolidColorBrush Color="#FF9ba4ff" x:Key="Goods_LightLight" Opacity="0.1" />
+   <SolidColorBrush Color="#FF4855d1" x:Key="Goods_Dark" />
+
+   <SolidColorBrush Color="#FF9b9b9b" x:Key="MiscItem" />
+   <SolidColorBrush Color="#FFbcbcbc" x:Key="MiscItem_Light" />
+
+   <SolidColorBrush Color="#FFf1c40d" x:Key="Invoice"/>
+   <SolidColorBrush Color="#FFf39c12" x:Key="Invoice_Dark"/>
+   <SolidColorBrush Color="#FFffde5a" x:Key="Invoice_Light"/>
+
+   <SolidColorBrush Color="#FF40698A" x:Key="Stock" />
+   <SolidColorBrush Color="#FF64A3D6" x:Key="Stock_Light" />
+   <SolidColorBrush Color="#FF1E3040" x:Key="Stock_Dark" />
+
+   <SolidColorBrush Color="#FF50C7A6" x:Key="TeamMember" />
+   <SolidColorBrush Color="#FF63F7CE" x:Key="TeamMember_Light" />
+   <SolidColorBrush Color="#FF2D705D" x:Key="TeamMember_Dark" />
+
+   <SolidColorBrush Color="#FFdd2a44" x:Key="NonAssembly" />
+   <SolidColorBrush Color="#FFffc600" x:Key="Assembly" />
+
+   <SolidColorBrush Color="#FFC7C7C7" x:Key="Priority_Normal"/>
+   <SolidColorBrush Color="#FFffa800" x:Key="Priority_Urgent" />
+   <SolidColorBrush Color="#FFff0000" x:Key="Priority_Critical" />
+</ResourceDictionary>

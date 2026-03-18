@@ -1,0 +1,79 @@
+@using Accounts.Contracts
+@using BusinessAppFramework.Application.Interfaces
+@using BaseData.Contracts
+@using BaseData.Domain.DomainObjects
+@using BusinessAppFramework.Contracts
+@using BusinessAppFramework.Domain
+@using BusinessAppFramework.WebUI.Components.Browser
+@using MudBlazor
+@using Accounts.Domain.DomainObjects
+@using BusinessAppFramework.Domain.DomainObjects
+@using BusinessAppFramework.WebUI.Components.General
+@using BusinessAppFramework.WebUI.Components.Header
+@using BusinessAppFramework.WebUI.Components.Pages
+@using BusinessAppFramework.WebUI.Components.Pages.DomainObjectPages
+@using BusinessAppFramework.WebUI.Interfaces
+@using BusinessAppFramework.WebUI.Components.Editor
+@using MyBusinessApp.Contracts
+@using Search.Contracts.SearchResults
+
+@inject ILocalizedStringService LocalizedStringService
+
+<MudStack Spacing="6">
+
+    <MudStack Spacing="2" Row="true" Class="mr-4 ml-4">
+        <ActionButton OnClick="() => DeleteAsync()"
+                      ActionKey="@StringKey.From(ActionKeys.DeleteActionKey)" />
+    </MudStack>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(BusinessAppFramework.Contracts.StringKeys.InfosKey)">
+        <DomainObjectProperties OnChanged="() => DomainObjectPage?.MarkDirty()" Columns="4" />
+        <DomainObjectHistory />
+    </DomainObjectPageSection>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(ParentChildRelationKeys.BusinessPartnerAdressRelationKey)">
+        <DomainObjectTileList TDomainObject="Adress"
+                              TSearchResult="AdressSearchResult"
+                              TilesIcon="@Icons.Material.Outlined.List"
+                              ParentId="DomainObjectPage?.Id"
+                              Branch="@DomainObjectPage?.GetTreeBranch(ParentChildRelationKeys.BusinessPartnerAdressRelationKey)" />
+    </DomainObjectPageSection>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(ParentChildRelationKeys.BusinessPartnerContactRelationKey)">
+        <DomainObjectTileList TDomainObject="Contact"
+                              TSearchResult="ContactSearchResult"
+                              TilesIcon="@Icons.Material.Outlined.List"
+                              ParentId="DomainObjectPage?.Id"
+                              Branch="@DomainObjectPage?.GetTreeBranch(ParentChildRelationKeys.BusinessPartnerContactRelationKey)" />
+    </DomainObjectPageSection>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(ParentChildRelationKeys.BusinessPartnerNoteRelationKey)">
+        <DomainObjectTileList TDomainObject="Note"
+                              TSearchResult="NoteSearchResult"
+                              TilesIcon="@Icons.Material.Outlined.Chat"
+                              ParentId="DomainObjectPage?.Id"
+                              Branch="@DomainObjectPage?.GetTreeBranch(ParentChildRelationKeys.BusinessPartnerNoteRelationKey)" />
+    </DomainObjectPageSection>
+</MudStack>
+
+@code {
+    [CascadingParameter] public DomainObjectPage<BusinessPartner>? DomainObjectPage { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        if (DomainObjectPage != null)
+        {
+            await DomainObjectPage.LoadPageTreeAsync(MyBusinessAppContracts.BusinessPartnerPageTree);
+        }
+    }
+
+    private async Task DeleteAsync()
+    {
+        if (DomainObjectPage != null)
+        {
+            await DomainObjectPage.DeleteAsync();
+        }
+    }
+}

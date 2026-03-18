@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+        <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MudBlazor" Version="9.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.WebUI\BusinessAppFramework.WebUI.csproj" />
+        <ProjectReference Include="..\MyBusinessAppDemo.Application\MyBusinessAppDemo.Application.csproj" />
+        <ProjectReference Include="..\MyBusinessAppDemo.Bootstrapper\MyBusinessAppDemo.Bootstrapper.csproj" />
+        <ProjectReference Include="..\MyBusinessAppDemo.Contracts\MyBusinessAppDemo.Contracts.csproj" />
+        <ProjectReference Include="..\MyBusinessAppDemo.Infrastructure\MyBusinessAppDemo.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

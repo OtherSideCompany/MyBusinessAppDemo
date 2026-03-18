@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="BaseData.Desktop.Workspaces.Permissions.PermissionsWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaseData.Desktop.Workspaces.Permissions"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:browser="clr-namespace:OtherSideCore.Wpf.UserControls.Browser;assembly=OtherSideCore.Wpf" 
+             xmlns:searchlists="clr-namespace:BaseData.Desktop.SearchLists"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   <Grid>
+      <browser:SingleDomainObjectBrowser>
+
+         <browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_MoreActionsContent>
+
+            <StackPanel>
+
+               <osc_customcontrols:SvgImageTextButton SvgImageTextButton_IconGeometry="{StaticResource icon_pencil-outline}"
+                                                      SvgImageTextButton_Text="Éditer les détails" 
+                                                      SvgImageTextButton_ImageSize="20"
+                                                      Height="32"
+                                                      BorderThickness="0"
+                                                      Command="{Binding ShowDomainObjectDetailsEditorAsyncCommand}"
+                                                      CommandParameter="{Binding Selection.SelectedItem}"/>
+
+            </StackPanel>
+
+         </browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_MoreActionsContent>
+
+         <browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_EditorContent>
+
+            <local:UserRoleEditor />
+
+         </browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_EditorContent>
+
+
+         <browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_ListContent>
+
+            <searchlists:UserRoleSearchList />
+
+         </browser:SingleDomainObjectBrowser.SingleDomainObjectBrowser_ListContent>
+
+
+      </browser:SingleDomainObjectBrowser>
+   </Grid>
+</UserControl>

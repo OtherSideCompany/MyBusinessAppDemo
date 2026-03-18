@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="Accounts.Desktop.Workspaces.BusinessPartner.ContactListEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Accounts.Desktop.Workspaces.BusinessPartner"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:list="clr-namespace:OtherSideCore.Wpf.UserControls.List;assembly=OtherSideCore.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   <UserControl.Resources>
+
+      <Style TargetType="{x:Type Border}" x:Key="ActiveStateBorder" BasedOn="{StaticResource ListBorderStyle}">
+         <Setter Property="Background" Value="White" />
+         <Setter Property="Margin" Value="0,0,0,8" />
+      </Style>
+
+   </UserControl.Resources>
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto" />
+         <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <list:EmptyListIndicator DataContext="{Binding Roots}"
+                               EmptyListIndicator_Text="Aucun contact enregistré"
+                               Margin="0,0,0,8" />
+
+      <ItemsControl ItemsSource="{Binding Roots}">
+         <ItemsControl.ItemTemplate>
+            <DataTemplate>
+
+               <Border Style="{StaticResource ActiveStateBorder}">
+
+                  <Grid>
+                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                     </Grid.RowDefinitions>
+
+                     <ToggleButton Grid.Row="0" 
+                                Style="{StaticResource CardHeaderToggleButton}" 
+                                IsChecked="{Binding DomainObjectViewModel.IsExpanded}">
+                        <ToggleButton.Content>
+                           <StackPanel Orientation="Horizontal">
+
+                              <osc_customcontrols:SvgViewer SvgViewer_ImageGeometry="{StaticResource icon_account}" 
+                                                            SvgViewer_ImageWidth="20" 
+                                                            SvgViewer_ImageColor="{StaticResource Green_Dark}"
+                                                            Visibility="{Binding DomainObjectViewModel.IsActive, Converter={StaticResource BoolToVisibleOrCollapsed}}" />
+
+                              <osc_customcontrols:SvgViewer SvgViewer_ImageGeometry="{StaticResource icon_account}" 
+                                                            SvgViewer_ImageWidth="20" 
+                                                            SvgViewer_ImageColor="{StaticResource Green_Dark}"
+                                                            Opacity="0.3"
+                                                            Visibility="{Binding DomainObjectViewModel.IsActive, Converter={StaticResource BoolToVisibleOrCollapsed}, ConverterParameter=invert}" />
+
+                              <TextBlock Margin="8,0,0,0" IsEnabled="{Binding DomainObjectViewModel.IsActive}" Text="{Binding DomainObjectViewModel.Name}" />
+
+                           </StackPanel>
+                        </ToggleButton.Content>
+                     </ToggleButton>
+
+                     <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,8,0,0"
+                           Visibility="{Binding DomainObjectViewModel.IsExpanded, Converter={StaticResource BoolToVisibleOrCollapsed}}">
+                        <Grid.ColumnDefinitions>
+                           <ColumnDefinition Width="Auto" />
+                           <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                           <RowDefinition Height="Auto" />
+                           <RowDefinition Height="Auto" />
+                           <RowDefinition Height="Auto" />
+                           <RowDefinition Height="Auto" />
+                           <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <osc_customcontrols:SvgViewer Grid.Row="0" Grid.Column="0" SvgViewer_ImageGeometry="{StaticResource icon_account-outline}" SvgViewer_ImageWidth="16" SvgViewer_ImageColor="{StaticResource Green}" />
+                        <osc_customcontrols:SvgViewer Grid.Row="1" Grid.Column="0" SvgViewer_ImageGeometry="{StaticResource icon_email-outline}" SvgViewer_ImageWidth="16" SvgViewer_ImageColor="{StaticResource Green}" />
+                        <osc_customcontrols:SvgViewer Grid.Row="2" Grid.Column="0" SvgViewer_ImageGeometry="{StaticResource icon_phone-outline}" SvgViewer_ImageWidth="16" SvgViewer_ImageColor="{StaticResource Green}" />
+
+                        <osc_customcontrols:ClickSelectTextBox Grid.Row="0" Grid.Column="1" Text="{Binding DomainObjectViewModel.Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource EditorClickSelectTextBox}" Margin="8,2,0,2" Background="White"/>
+                        <osc_customcontrols:ClickSelectTextBox Grid.Row="1" Grid.Column="1" Text="{Binding DomainObjectViewModel.Mail, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource EditorClickSelectTextBox}" Margin="8,2,0,2" Background="White"/>
+                        <osc_customcontrols:ClickSelectTextBox Grid.Row="2" Grid.Column="1" Text="{Binding DomainObjectViewModel.Phone, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource EditorClickSelectTextBox}" Margin="8,2,0,2" Background="White"/>
+
+                        <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,8,0,0">
+
+                           <osc_customcontrols:SvgImageToggleButton Width="24" Height="24"
+                                                                    BorderThickness="0"
+                                                                    SvgImageToggleButton_IconGeometry="{StaticResource icon_power}" 
+                                                                    SvgImageToggleButton_ImageSize="16"
+                                                                    IsChecked="{Binding DomainObjectViewModel.IsActive, UpdateSourceTrigger=PropertyChanged}"/>
+
+                           <osc_customcontrols:SvgImageButton Width="24" Height="24"
+                                                              BorderThickness="0"
+                                                              SvgImageButton_IconGeometry="{StaticResource icon_trash-can-outline}" 
+                                                              SvgImageButton_ImageSize="16"
+                                                              Command="{Binding DomainObjectEditorViewModel.DeleteAsyncCommand}"
+                                                              CommandParameter="{Binding DomainObjectViewModel}"/>
+                        </StackPanel>
+
+                     </Grid>
+
+
+                  </Grid>
+               </Border>
+
+            </DataTemplate>
+         </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+      <osc_customcontrols:SvgImageTextButton Grid.Row="1" Height="32" HorizontalAlignment="Right"
+                                             Style="{StaticResource SvgImageTextButtonDark}"  
+                                             HorizontalContentAlignment="Center"
+                                             SvgImageTextButton_IconGeometry="{StaticResource icon_plus}"
+                                             SvgImageTextButton_ImageSize="20"
+                                             SvgImageTextButton_Text="Nouveau contact"
+                                             Command="{Binding CreateDefaultRootNodeAsyncCommand}" />
+   </Grid>
+</UserControl>

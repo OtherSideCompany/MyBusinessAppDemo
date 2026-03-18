@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="BaseData.Desktop.SearchLists.AdressesSearchList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaseData.Desktop.SearchLists"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:browser="clr-namespace:OtherSideCore.Wpf.UserControls.Browser;assembly=OtherSideCore.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+      <browser:BrowserDomainObjectSearchListView>
+         <browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+            <GridView>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Partenaire" 
+                                                          SortPropertyName="DomainObjectSearchResult.ParentName" 
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.ParentName}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Libellé" 
+                                                          SortPropertyName="DomainObjectSearchResult.Label" 
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.Label}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Adresse" 
+                                                          SortPropertyName="DomainObjectSearchResult.AdressDescription" 
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.AdressDescription}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="100" Header="Code postal" 
+                                                          SortPropertyName="DomainObjectSearchResult.Code" 
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.Code}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Localité" 
+                                                          SortPropertyName="DomainObjectSearchResult.City"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.City}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Pays" 
+                                                          SortPropertyName="DomainObjectSearchResult.CountryAlpha2Code"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.CountryAlpha2Code}"/>
+
+
+
+            </GridView>
+         </browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+      </browser:BrowserDomainObjectSearchListView>
+   </Grid>
+</UserControl>

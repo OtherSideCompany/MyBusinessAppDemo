@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Factories\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <None Remove="Factories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="SqlViews\vw_AdressSearchResult.sql" />
+    <None Remove="SqlViews\vw_BusinessPartnerSearchResult.sql" />
+    <None Remove="SqlViews\vw_BusinessPartnerTypeSearchResult.sql" />
+    <None Remove="SqlViews\vw_CompanySearchResult.sql" />
+    <None Remove="SqlViews\vw_ContactSearchResult.sql" />
+    <None Remove="SqlViews\vw_CountrySearchResult.sql" />
+    <None Remove="SqlViews\vw_DocumentSearchResult.sql" />
+    <None Remove="SqlViews\vw_NoteSearchResult.sql" />
+    <None Remove="SqlViews\vw_PostalCodeSearchResult.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SqlViews\vw_BusinessPartnerTypeSearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_CompanySearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_CountrySearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_DocumentSearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_NoteSearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_PostalCodeSearchResult.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SqlViews\vw_AdressSearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_BusinessPartnerSearchResult.sql" />
+    <EmbeddedResource Include="SqlViews\vw_ContactSearchResult.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Infrastructure\BusinessAppFramework.Infrastructure.csproj" />
+    <ProjectReference Include="..\BaseData.Domain\BaseData.Domain.csproj" />
+    <ProjectReference Include="..\Search.Contracts\Search.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

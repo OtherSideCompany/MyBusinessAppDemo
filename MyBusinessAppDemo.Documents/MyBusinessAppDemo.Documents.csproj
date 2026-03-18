@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ContainerTemplates\base.css" />
+    <None Remove="ContainerTemplates\ExternalDocumentTemplate.html" />
+    <None Remove="ContainerTemplates\PurchaseQuoteTemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ContainerTemplates\base.css" />
+    <EmbeddedResource Include="ContainerTemplates\ExternalDocumentTemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Application\BusinessAppFramework.Application.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.DocumentRendering\BusinessAppFramework.DocumentRendering.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Domain\BusinessAppFramework.Domain.csproj" />
+    <ProjectReference Include="..\Accounts.Domain\Accounts.Domain.csproj" />
+    <ProjectReference Include="..\BaseData.Application\BaseData.Application.csproj" />
+    <ProjectReference Include="..\BaseData.Domain\BaseData.Domain.csproj" />
+    <ProjectReference Include="..\MyBusinessAppDemo.Contracts\MyBusinessAppDemo.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DocumentTemplates\" />
+    <Folder Include="ModelLoaders\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Editor\AdressListEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Editor\NoteListEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\AdressesSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\CountrySearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\PostalCodeSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\TeamMemberSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\UserRoleSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\UserSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\AdressSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\CountrySelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\PostalCodeSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\TeamMemberSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\UserSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BaseDataModuleView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Countries\CountryEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Countries\CountryWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Permissions\PermissionsWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Permissions\UserRoleDetailsEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Permissions\UserRoleEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\PostalCodes\PostalCodeEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\PostalCodes\PostalCodeWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\TeamMembers\TeamMemberEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\TeamMembers\TeamMemberWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\User\UserEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\User\UserWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Editor\AdressListEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Editor\NoteListEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\AdressesSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\CountrySearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\PostalCodeSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\TeamMemberSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\UserRoleSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\UserSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\AdressSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\CountrySelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\PostalCodeSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\TeamMemberSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\UserSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BaseDataModuleView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Countries\CountryEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Countries\CountryWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Permissions\PermissionsWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Permissions\UserRoleDetailsEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Permissions\UserRoleEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\PostalCodes\PostalCodeEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\PostalCodes\PostalCodeWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\TeamMembers\TeamMemberEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\TeamMembers\TeamMemberWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\User\UserEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\User\UserWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

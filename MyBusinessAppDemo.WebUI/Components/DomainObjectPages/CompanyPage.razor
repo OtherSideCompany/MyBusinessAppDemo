@@ -1,0 +1,115 @@
+@using Accounts.Contracts
+@using Accounts.Domain.DomainObjects
+@using BaseData.Contracts
+@using BaseData.Domain.DomainObjects
+@using BaseData.WebUI.Interfaces
+@using BaseData.WebUI.Services
+@using BusinessAppFramework.Application.Interfaces
+@using BusinessAppFramework.Application.Services
+@using BusinessAppFramework.Contracts
+@using BusinessAppFramework.Domain
+@using BusinessAppFramework.Domain.DomainObjects
+@using BusinessAppFramework.WebUI.Components.Browser
+@using BusinessAppFramework.WebUI.Components.Editor
+@using BusinessAppFramework.WebUI.Components.General
+@using BusinessAppFramework.WebUI.Components.Header
+@using BusinessAppFramework.WebUI.Components.Pages
+@using BusinessAppFramework.WebUI.Components.Pages.DomainObjectPages
+@using BusinessAppFramework.WebUI.Interfaces
+@using MudBlazor
+@using MyBusinessApp.Contracts
+@using Search.Contracts.SearchResults
+
+@inject ILocalizedStringService LocalizedStringService
+@inject IImageCompressionService ImageCompressionService
+@inject ICompanyServiceGateway CompanyServiceGateway
+
+<MudStack Spacing="6">
+
+    <MudStack Spacing="2" Row="true" Class="mr-4 ml-4">
+        <ActionButton OnClick="() => DeleteAsync()"
+                      ActionKey="@StringKey.From(ActionKeys.DeleteActionKey)" />
+    </MudStack>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(BusinessAppFramework.Contracts.StringKeys.InfosKey)">
+        <DomainObjectProperties OnChanged="() => DomainObjectPage?.MarkDirty()" Columns="4" />
+        <DomainObjectHistory />
+    </DomainObjectPageSection>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(BusinessAppFramework.Contracts.StringKeys.LogoKey)">
+       <MudFileUpload T="IBrowserFile" 
+                      DragAndDrop="true" 
+                      Accept=".png,image/png"
+                      MaximumFileCount="1"
+                      FilesChanged="(file) => LogoFileSelected(file)" >
+         <SelectedTemplate />
+       </MudFileUpload>
+
+        @if (LogoData != null && LogoData.Length > 0)
+        {
+            <MudImage Src="@GetLogoDataUrl()" 
+                      ObjectFit="ObjectFit.Contain" 
+                      Height="200" />
+        }
+    </DomainObjectPageSection>
+
+    <DomainObjectPageSection Title="@LocalizedStringService.Get(ParentChildRelationKeys.CompanyAdressRelationKey)">
+        <DomainObjectTileList TDomainObject="Adress"
+                              TSearchResult="AdressSearchResult"
+                              TilesIcon="@Icons.Material.Outlined.List"
+                              ParentId="DomainObjectPage?.Id"
+                              Branch="@DomainObjectPage?.GetTreeBranch(ParentChildRelationKeys.CompanyAdressRelationKey)" />
+    </DomainObjectPageSection>
+    
+</MudStack>
+
+@code {
+    [CascadingParameter] public DomainObjectPage<Company>? DomainObjectPage { get; set; }
+
+    private byte[]? LogoData { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        if (DomainObjectPage != null)
+        {
+            await DomainObjectPage.LoadPageTreeAsync(MyBusinessAppContracts.CompanyPageTree);
+
+            if (DomainObjectPage.DomainObject != null)
+            {
+                LogoData = await CompanyServiceGateway.GetLogoAsync(DomainObjectPage.DomainObject.Id);
+            }
+        }
+    }
+
+    private async Task LogoFileSelected(IBrowserFile file)
+    {
+        if (file == null || DomainObjectPage?.DomainObject == null)
+            return;
+
+        var compressedImage = await ImageCompressionService.CompressPngImageAsync(file.OpenReadStream(1_000_000), 800, 800);       
+
+        await CompanyServiceGateway.SaveLogoAsync(DomainObjectPage.DomainObject.Id, compressedImage);
+
+        LogoData = await CompanyServiceGateway.GetLogoAsync(DomainObjectPage.DomainObject.Id);
+    }
+
+    private string GetLogoDataUrl()
+    {
+        if (LogoData != null)
+        {
+            var base64 = Convert.ToBase64String(LogoData);
+            return $"data:image/png;base64,{base64}";
+        }
+        return string.Empty;
+    }
+
+    private async Task DeleteAsync()
+    {
+        if (DomainObjectPage != null)
+        {
+            await DomainObjectPage.DeleteAsync();
+        }
+    }
+}

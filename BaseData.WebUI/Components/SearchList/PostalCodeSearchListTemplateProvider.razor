@@ -1,0 +1,21 @@
+@using BaseData.Contracts
+@using MudBlazor
+@using BusinessAppFramework.Application.Interfaces
+@using Domain
+@using BusinessAppFramework.WebUI.Components.SearchList
+@using Search.Contracts.SearchResults
+
+@implements ISearchListTemplateProvider<PostalCodeSearchResult>
+
+@inject ILocalizedStringService LocalizedStringService
+
+@code {
+    public SearchListTemplate<PostalCodeSearchResult> Template => new()
+    {
+        DataGridColumns = @<text>
+            <PropertyColumn T="PostalCodeSearchResult" TProperty="string" Property="x => x.Code" Title="@LocalizedStringService.Get(BaseDataContracts.PostalCode_Code)" />
+            <PropertyColumn T="PostalCodeSearchResult" TProperty="string" Property="x => x.City" Title="@LocalizedStringService.Get(BaseDataContracts.PostalCode_City)" />
+            <PropertyColumn T="PostalCodeSearchResult" TProperty="string" Property="x => x.CountryAlpha2Code" Title="@LocalizedStringService.Get(BaseDataContracts.PostalCode_CountryReference)" />
+        </text>
+    };
+}

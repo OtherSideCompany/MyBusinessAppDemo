@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="SearchLists\BusinessPartnerTypeSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\ContactSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\BusinessPartnerSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Selector\ContactSelectorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BusinessPartnerType\BusinessPartnerTypeEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BusinessPartnerType\BusinessPartnerTypeWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="SearchLists\BusinessPartnerTypeSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\ContactSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\BusinessPartnerSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Selector\ContactSelectorView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BusinessPartnerType\BusinessPartnerTypeEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BusinessPartnerType\BusinessPartnerTypeWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

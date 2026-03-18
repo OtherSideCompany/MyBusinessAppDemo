@@ -1,0 +1,189 @@
+﻿<Application x:Class="Manufacturing.Desktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Manufacturing.Desktop"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:browser="clr-namespace:OtherSideCore.Wpf.UserControls.Browser;assembly=OtherSideCore.Wpf"
+             xmlns:files="clr-namespace:OtherSideCore.Wpf.UserControls.Files;assembly=OtherSideCore.Wpf"
+             xmlns:filters="clr-namespace:OtherSideCore.Wpf.UserControls.Filters;assembly=OtherSideCore.Wpf"
+             xmlns:modules="clr-namespace:OtherSideCore.Wpf.UserControls.Modules;assembly=OtherSideCore.Wpf"
+             xmlns:window="clr-namespace:OtherSideCore.Wpf.UserControls.Window;assembly=OtherSideCore.Wpf"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:workflows="clr-namespace:OtherSideCore.Wpf.UserControls.Workflows;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf">
+    <Application.Resources>
+      <ResourceDictionary>
+
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/OtherSideCore.Wpf;component/Converters/Converters.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/OtherSideCore.Wpf;component/DataTemplateSelector/DataTemplateSelectors.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/OtherSideCore.Wpf;component/Styles.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/OtherSideCore.Wpf;component/Icons/Icons.xaml"/>
+            <!--<ResourceDictionary Source="pack://application:,,,/MMSoft.Desktop;component/Selectors/DomainObjectSelectorDataTemplates.xaml"/>-->
+            <ResourceDictionary Source="pack://application:,,,/Manufacturing.Desktop;component/General/ReferenceTypeDataTemplates.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/Manufacturing.Desktop;component/General/ThemeColors.xaml"/>
+         </ResourceDictionary.MergedDictionaries>
+
+         <sys:Boolean x:Key="True">True</sys:Boolean>
+         <sys:Boolean x:Key="False">False</sys:Boolean>
+
+         <Style TargetType="{x:Type window:MainWindow}">
+            <Setter Property="MainWindow_ApplicationLogoColor" Value="#2b2b2b" />
+         </Style>
+
+         <Style TargetType="{x:Type window:SubWindow}">
+            <Setter Property="SubWindow_ApplicationLogoColor" Value="#2b2b2b" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:SvgImageTextButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextButton}}">
+            <Setter Property="SvgImageTextButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageTextButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style x:Key="SvgImageTextButtonDark" TargetType="{x:Type osc_customcontrols:SvgImageTextButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextButton}}">
+            <Setter Property="SvgImageTextButton_OverBackgroundColor" Value="{StaticResource Green}" />
+            <Setter Property="SvgImageTextButton_ImageColor" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style x:Key="SvgImageTextToggleButtonDark" TargetType="{x:Type osc_customcontrols:SvgImageTextToggleButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextToggleButton}}">
+            <Setter Property="SvgImageTextToggleButton_OverBackgroundColor" Value="{StaticResource Green}" />
+            <Setter Property="SvgImageTextToggleButton_CheckedBackgroundColor" Value="{StaticResource Green}" />
+            <Setter Property="SvgImageTextToggleButton_ImageColor" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style x:Key="SvgImageTextButtonSemiDark" TargetType="{x:Type osc_customcontrols:SvgImageTextButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextButton}}">
+            <Setter Property="SvgImageTextButton_OverBackgroundColor" Value="{StaticResource Green_SemiLight}" />
+            <Setter Property="SvgImageTextButton_ImageColor" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style x:Key="SvgImageButtonDark" TargetType="{x:Type osc_customcontrols:SvgImageButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageButton}}">
+            <Setter Property="SvgImageButton_OverBackgroundColor" Value="{StaticResource Green}" />
+            <Setter Property="SvgImageButton_ImageColor" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style x:Key="SvgImageButtonSemiDark" TargetType="{x:Type osc_customcontrols:SvgImageButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageButton}}">
+            <Setter Property="SvgImageButton_OverBackgroundColor" Value="{StaticResource Green_SemiLight}" />
+            <Setter Property="SvgImageButton_ImageColor" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:SvgImageButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageButton}}">
+            <Setter Property="SvgImageButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style x:Key="DatagridActionSvgImageButton" TargetType="{x:Type osc_customcontrols:SvgImageButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageButton}}">
+            <Setter Property="Width" Value="24" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="SvgImageButton_ImageSize" Value="16" />
+            <Setter Property="SvgImageButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:SvgImageToggleButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageToggleButton}}">
+            <Setter Property="SvgImageToggleButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageToggleButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:SvgImageTextToggleButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextToggleButton}}">
+            <Setter Property="SvgImageTextToggleButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageTextToggleButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:SvgImageTextRadioButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:SvgImageTextRadioButton}}">
+            <Setter Property="SvgImageTextRadioButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="SvgImageTextRadioButton_ImageColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:TextToggleButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:TextToggleButton}}">
+            <Setter Property="TextToggleButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="TextToggleButton_MouseDownBackgroundColor" Value="{StaticResource Green_Light}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:TextRadioButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:TextRadioButton}}">
+            <Setter Property="TextRadioButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="TextRadioButton_CheckedBackgroundColor" Value="{StaticResource Green_Light}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:TextButton}" BasedOn="{StaticResource {x:Type osc_customcontrols:TextButton}}">
+            <Setter Property="TextButton_OverBackgroundColor" Value="{StaticResource Green_Light}" />
+         </Style>
+
+         <Style TargetType="{x:Type filters:MultiTextFilterView}">
+            <Setter Property="MultiTextFilterViewButton_ImageColor" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style TargetType="{x:Type browser:BrowserDomainObjectSearchListView}">
+            <Setter Property="BrowserDomainObjectSearchListView_ThumbColor" Value="{StaticResource Green}" />
+            <Setter Property="BrowserDomainObjectSearchListView_SelectedItemBackgroundColor" Value="{StaticResource Green_Light}" />
+            <Setter Property="BrowserDomainObjectSearchListView_HeaderForegroundColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type modules:LoginView}">
+            <Setter Property="LoginView_ConnectionButtonColor" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style TargetType="{x:Type browser:ConstraintsView}">
+            <Setter Property="ConstraintsView_SelectedConstraintColor" Value="{StaticResource Brown_Light}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:FileDropView}">
+            <Setter Property="FileDropUserControl_IconColor" Value="{StaticResource Green_Dark}" />
+            <Setter Property="FileDropUserControl_OverBorderColor" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:FileTypeIcon}">
+            <Setter Property="FileTypeIcon_FileIconColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:FolderTypeIcon}">
+            <Setter Property="FolderTypeIcon_FolderIconColor" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:FileListView}">
+            <Setter Property="FileListView_FileOverColor" Value="{StaticResource Green_LightLight}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:ManagedFileListView}">
+            <Setter Property="ManagedFileListView_FileOverColor" Value="{StaticResource Green_LightLight}" />
+         </Style>
+
+         <Style TargetType="{x:Type files:FolderListView}">
+            <Setter Property="FolderListView_FolderOverColor" Value="{StaticResource Green_LightLight}" />
+         </Style>
+
+         <Style TargetType="{x:Type modules:ModuleHeader}">
+            <Setter Property="ModuleHeader_Foreground" Value="{StaticResource Green_Dark}" />
+         </Style>
+
+         <Style TargetType="{x:Type workflows:ProcessWorkflowHeader}">
+            <Setter Property="ProcessWorkflowHeader_CompletedColor" Value="{StaticResource Brown}" />
+            <Setter Property="ProcessWorkflowHeader_SelectedColor" Value="{StaticResource Brown}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_usercontrols:ValueSummarySticker}">
+            <Setter Property="ValueSummarySticker_IconColor" Value="{StaticResource Green_Dark}" />
+            <Setter Property="ValueSummarySticker_ValueTextColor" Value="{StaticResource Green}" />
+         </Style>
+
+         <Style TargetType="{x:Type osc_customcontrols:Switch}" BasedOn="{StaticResource {x:Type osc_customcontrols:Switch}}">
+            <Setter Property="Switch_CheckedBackgroundColor" Value="{StaticResource Green_SemiLight}" />
+         </Style>
+
+      </ResourceDictionary>
+   </Application.Resources>
+</Application>

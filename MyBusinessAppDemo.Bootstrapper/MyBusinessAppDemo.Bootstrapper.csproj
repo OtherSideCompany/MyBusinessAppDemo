@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Bootstrapper\BusinessAppFramework.Bootstrapper.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.DocumentRendering\BusinessAppFramework.DocumentRendering.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.WebUI\BusinessAppFramework.WebUI.csproj" />
+    <ProjectReference Include="..\Accounts.Bootstrapper\Accounts.Bootstrapper.csproj" />
+    <ProjectReference Include="..\BaseData.Bootstrapper\BaseData.Bootstrapper.csproj" />
+    <ProjectReference Include="..\MyBusinessAppDemo.Adapter\MyBusinessAppDemo.Adapter.csproj" />
+    <ProjectReference Include="..\MyBusinessAppDemo.Contracts\MyBusinessAppDemo.Contracts.csproj" />
+    <ProjectReference Include="..\MyBusinessAppDemo.Documents\MyBusinessAppDemo.Documents.csproj" />
+    <ProjectReference Include="..\MyBusinessAppDemo.Infrastructure\MyBusinessAppDemo.Infrastructure.csproj" />
+    <ProjectReference Include="..\Search.Bootstrapper\Search.Bootstrapper.csproj" />
+  </ItemGroup>
+
+</Project>

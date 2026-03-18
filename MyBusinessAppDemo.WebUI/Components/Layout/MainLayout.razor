@@ -1,0 +1,116 @@
+@using MudBlazor
+@using BusinessAppFramework.WebUI.Components.NavigationMenu
+@using BusinessAppFramework.WebUI.Interfaces
+
+@inject IHttpClientFactory ClientFactory
+@inject IIconFactory IconFactory
+
+@inherits LayoutComponentBase
+
+<style>
+    html, body {
+        height: 100%;
+    }
+
+    .main-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .page-root {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .osc-global-overrides {
+        --mud-drawer-width-right: 420px !important;
+        --mud-appbar-height: 0px !important;
+    }
+
+    .osc-drawer-logo {
+
+        height: 48px;
+        background: #2A2A30;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .osc-drawer-logo-icon {
+        color: white !important;
+    }
+
+</style>
+
+<MudThemeProvider Theme="@_theme" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout Class="osc-global-overrides">
+
+    <MudDrawer Variant="DrawerVariant.Mini"
+               Elevation="2"
+               ClipMode="DrawerClipMode.Docked">
+
+        <div class="osc-drawer-logo">
+
+            <MudIcon Icon="@Icons.Material.Sharp.Factory"
+                     Style="color:#FFFFFF; margin-left:0px; margin-top:0px;"
+                     Size="Size.Medium" />
+        </div>
+
+        <NavigationMenu />
+
+    </MudDrawer>
+
+    <MudMainContent Class="main-content">
+        @Body
+    </MudMainContent>
+
+</MudLayout>
+
+@code {
+    private MudTheme _theme = new MudTheme();
+
+    protected override void OnInitialized()
+    {
+        _theme.PaletteLight.Primary = "#24B442";
+        _theme.PaletteLight.PrimaryDarken = "#1A8A31";
+        _theme.PaletteLight.PrimaryLighten = "#4FD46A";
+
+        _theme.PaletteLight.Secondary = "#E2A600";
+        _theme.PaletteLight.SecondaryDarken = "#B88500";
+        _theme.PaletteLight.SecondaryLighten = "#F5C335";
+
+        _theme.PaletteLight.Tertiary = "#D94A2C";
+        _theme.PaletteLight.TertiaryDarken = "#B23C22";
+        _theme.PaletteLight.TertiaryLighten = "#F06C4E";
+
+        _theme.PaletteLight.Background = "#FFFFFF";
+
+        _theme.PaletteLight.AppbarBackground = "#FFFFFF";
+        _theme.PaletteLight.AppbarText = "#F4F5F7";
+
+        _theme.PaletteLight.TextPrimary = "#212121";
+        _theme.PaletteLight.Secondary = "#424242";
+        _theme.PaletteLight.TextDisabled = "#9E9E9E";
+        _theme.PaletteLight.ActionDefault = "#212121";
+        _theme.PaletteLight.ActionDisabled = "#9E9E9E";
+
+        _theme.PaletteLight.PrimaryContrastText = "#FFFFFF";
+        _theme.PaletteLight.SecondaryContrastText = "#FFFFFF";
+        _theme.PaletteLight.TertiaryContrastText = "#FFFFFF";
+
+        _theme.PaletteLight.Dark = "#1A1A1C";
+
+        _theme.PaletteLight.DrawerBackground = "#1A1A1C";
+        _theme.PaletteLight.DrawerText = "#FFFFFF";
+        _theme.PaletteLight.DrawerIcon = "#FFFFFF";
+    }
+}

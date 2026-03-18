@@ -1,0 +1,136 @@
+﻿@using BaseData.Contracts
+@using BaseData.Domain.DomainObjects
+@using BusinessAppFramework.Application.Interfaces
+@using BusinessAppFramework.Application.Services
+@using BusinessAppFramework.Application.Trees
+@using BusinessAppFramework.Contracts
+@using BusinessAppFramework.Domain.DomainObjects
+@using BusinessAppFramework.WebUI.Helpers
+@using BusinessAppFramework.WebUI.Interfaces
+@using MudBlazor
+
+@typeparam TDomainObject where TDomainObject : DomainObject, new()
+
+@inject ILocalizedStringService LocalizedStringService
+@inject IDomainObjectDocumentServiceGateway<TDomainObject> DomainObjectDocumentServiceGateway
+@inject IDomainObjectServiceGateway<Document> DocumentDomainObjectServiceGateway
+@inject IUserDialogService UserDialogService
+@inject NavigationManager NavigationManager
+
+<MudDataGrid Items="@_documents"
+             Class="osc-table"
+             Dense="false"
+
+             Hover="true"
+             Elevation="0"
+             ReadOnly="true"
+             ColumnResizeMode="ResizeMode.Column">
+   <Columns>
+      <PropertyColumn Property="x => x.CreatedByName" Title="@LocalizedStringService.Get(BaseDataContracts.Document_CreatedByName)" />
+      <PropertyColumn Property="x => x.FileName" Title="@LocalizedStringService.Get(BaseDataContracts.Document_FileName)" />
+      <PropertyColumn Property="x => x.ContentType" Title="@LocalizedStringService.Get(BaseDataContracts.Document_ContentType)" />
+      <TemplateColumn Title="@LocalizedStringService.Get(BaseDataContracts.Document_Size)">
+        <CellTemplate Context="cell">
+            @FileSizeFormatter.ToFriendlySize(cell.Item.ByteSize)
+        </CellTemplate>
+      </TemplateColumn>
+      <TemplateColumn Title="@LocalizedStringService.Get(StringKeys.ActionsKey)">
+            <CellTemplate Context="doc">
+                <MudStack Row="true">
+                  <MudIconButton Icon="@Icons.Material.Outlined.Download"
+                                 Size="Size.Small" 
+                                 OnClick="async () => await DownloadDocumentAsync(doc.Item.Id)"/>
+                  <MudIconButton Icon="@Icons.Material.Outlined.Delete"
+                                 Size="Size.Small"
+                                 Color="Color.Error"
+                                 OnClick="async () => await DeleteDocumentAsync(doc.Item.Id)"/>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+   </Columns>
+   
+</MudDataGrid>
+
+<MudFileUpload T="IReadOnlyList<IBrowserFile>" 
+               DragAndDrop="true" 
+               FilesChanged="(files) => FileSelected(files)">
+   <SelectedTemplate />
+</MudFileUpload>
+
+@code {
+    [Parameter, EditorRequired] public int DomainObjectId { get; set; }
+    [Parameter, EditorRequired] public Branch? Branch { get; set; }
+
+    private List<Document> _documents { get; set; } = new();
+    private readonly SemaphoreSlim _loadSemaphore = new(1, 1);
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        if (Branch == null)
+            return;
+
+        await _loadSemaphore.WaitAsync();
+
+        try
+        {
+            foreach (var node in Branch.Nodes)
+            {
+                if (!_documents.Any(d => d.Id == node.Id))
+                {
+                    await AddDocumentAsync(node.Id);
+                }
+            }
+        }
+        finally
+        {
+            _loadSemaphore.Release();
+        }
+    }
+
+    private async Task FileSelected(IReadOnlyList<IBrowserFile> files)
+    {
+        if (Branch != null)
+        {
+            foreach (var file in files)
+            {
+                await using var stream = file.OpenReadStream(maxAllowedSize: 50_000_000);
+                var documentId = await DomainObjectDocumentServiceGateway.UploadDocumentAsync(DomainObjectId, Branch.ParentChildRelationKey, file.Name, file.ContentType, stream);
+                await AddDocumentAsync(documentId);
+            }
+        }
+    }
+
+    private async Task DownloadDocumentAsync(int id)
+    {
+        if (! await DomainObjectDocumentServiceGateway.ExistsAsync(id))
+        {
+            UserDialogService.SnackError(LocalizedStringService.Get(MessageKeys.FileNoteFoundMessage) ?? "file_not_found_msg");
+            return;
+        }
+
+        var downloadUrl = DomainObjectDocumentServiceGateway.GetDownloadDocumentUrl(id);
+
+        NavigationManager.NavigateTo(downloadUrl, forceLoad: true);
+    }
+
+    private async Task DeleteDocumentAsync(int id)
+    {
+        if (await UserDialogService.ConfirmAsync(LocalizedStringService.Get(MessageKeys.DeleteConfirmationMessage) ?? "delete_msg"))
+        {
+            await DomainObjectDocumentServiceGateway.DeleteDocumentAsync(id);
+            _documents.RemoveAll(d => d.Id == id);
+        }
+    }    
+
+    private async Task AddDocumentAsync(int id)
+    {
+        var document = await DocumentDomainObjectServiceGateway.GetAsync(id);
+
+        if (document != null)
+        {
+            _documents.Add(document);
+        }
+    }    
+}

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="BaseData.Desktop.SearchLists.TeamMemberSearchList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaseData.Desktop.SearchLists"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:browser="clr-namespace:OtherSideCore.Wpf.UserControls.Browser;assembly=OtherSideCore.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+   <UserControl.Resources>
+
+      <DataTemplate x:Key="ActiveDot">
+
+         <Grid HorizontalAlignment="Left" Margin="8,0,0,0">
+            <Ellipse Width="8" Height="8" Fill="{StaticResource OtherSide_Red}"
+                     Visibility="{Binding DomainObjectSearchResult.IsActive, Converter={StaticResource BoolToVisibleOrCollapsed}, ConverterParameter=invert}"/>
+            <Ellipse Width="8" Height="8" Fill="{StaticResource OtherSide_Green}" x:Name="Icon" 
+                     Visibility="{Binding DomainObjectSearchResult.IsActive, Converter={StaticResource BoolToVisibleOrCollapsed}}"/>
+
+         </Grid>
+
+      </DataTemplate>
+
+   </UserControl.Resources>
+   <Grid>
+      <browser:BrowserDomainObjectSearchListView>
+         <browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+            <GridView>
+
+               <osc_customcontrols:SortableGridViewColumn Width="100" Header="Actif" 
+                                                          SortPropertyName="DomainObjectSearchResult.IsActive" 
+                                                          CellTemplate="{StaticResource ActiveDot}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Prénom" 
+                                                          SortPropertyName="DomainObjectSearchResult.FirstName" 
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.FirstName}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Nom" 
+                                                          SortPropertyName="DomainObjectSearchResult.LastName"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.LastName}"/>
+
+            </GridView>
+         </browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+      </browser:BrowserDomainObjectSearchListView>
+   </Grid>
+</UserControl>

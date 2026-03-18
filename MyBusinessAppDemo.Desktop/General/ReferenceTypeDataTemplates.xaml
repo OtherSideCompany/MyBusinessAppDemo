@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:general="clr-namespace:Manufacturing.Desktop.General" 
+                    xmlns:customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf">
+
+   <ResourceDictionary.MergedDictionaries>
+      <ResourceDictionary Source="pack://application:,,,/Manufacturing.Desktop;component/General/ThemeColors.xaml"/>
+   </ResourceDictionary.MergedDictionaries>
+
+   <Style TargetType="{x:Type Border}" x:Key="BorderStyle">
+      <Setter Property="CornerRadius" Value="8,0,0,8" />
+      <Setter Property="Padding" Value="4,0,4,0" />
+   </Style>
+
+   <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockStyle">
+      <Setter Property="Foreground" Value="White" />
+      <Setter Property="HorizontalAlignment" Value="Center" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="MinWidth" Value="32" />
+      <Setter Property="TextAlignment" Value="Center" />
+   </Style>   
+
+   <DataTemplate x:Key="BusinessPartnerTemplate">
+      <Border Style="{StaticResource BorderStyle}" Background="{StaticResource BusinessPartner}" ToolTip="Partenaire">
+         <customcontrols:SvgViewer SvgViewer_ImageColor="White" 
+                                   SvgViewer_ImageHeight="20"
+                                   SvgViewer_ImageGeometry="{StaticResource icon_handshake}"/>
+      </Border>
+   </DataTemplate>
+
+   <DataTemplate x:Key="ContactTemplate">
+      <Border Style="{StaticResource BorderStyle}" Background="{StaticResource Contact}" ToolTip="Contact">
+         <customcontrols:SvgViewer SvgViewer_ImageColor="White" 
+                                   SvgViewer_ImageHeight="20"
+                                   SvgViewer_ImageGeometry="{StaticResource icon_account}"/>
+      </Border>
+   </DataTemplate>
+
+   <DataTemplate x:Key="ProviderOrderTemplate">
+      <Border Style="{StaticResource BorderStyle}" Background="{StaticResource Provider_Order}" ToolTip="Commande fournisseur">
+         <customcontrols:SvgViewer SvgViewer_ImageColor="White" 
+                                   SvgViewer_ImageHeight="20"
+                                   SvgViewer_ImageGeometry="{StaticResource icon_book-open-variant}"/>
+      </Border>
+   </DataTemplate>
+
+   <DataTemplate x:Key="TeamMemberTemplate">
+      <Border Style="{StaticResource BorderStyle}" Background="{StaticResource TeamMember}" ToolTip="Membre de l'équipe">
+         <customcontrols:SvgViewer SvgViewer_ImageColor="White" 
+                                   SvgViewer_ImageHeight="20"
+                                   SvgViewer_ImageGeometry="{StaticResource icon_account}"/>
+      </Border>
+   </DataTemplate>
+
+   <general:ReferenceTypeTemplateSelector x:Key="ReferenceTypeTemplateSelector" 
+                                          ProviderOrderTemplate="{StaticResource ProviderOrderTemplate}"
+                                          BusinessPartnerTemplate="{StaticResource BusinessPartnerTemplate}"
+                                          ContactTemplate="{StaticResource ContactTemplate}"
+                                          TeamMemberTemplate="{StaticResource TeamMemberTemplate}"/>
+
+</ResourceDictionary>

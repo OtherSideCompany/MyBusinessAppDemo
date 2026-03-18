@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Accounts.Desktop.SearchLists.BusinessPartnerSearchList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Accounts.Desktop.SearchLists"
+             xmlns:osc_usercontrols="clr-namespace:OtherSideCore.Wpf.UserControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_customcontrols="clr-namespace:OtherSideCore.Wpf.CustomControls;assembly=OtherSideCore.Wpf"
+             xmlns:osc_extensions="clr-namespace:OtherSideCore.Wpf.Extensions;assembly=OtherSideCore.Wpf" 
+             xmlns:browser="clr-namespace:OtherSideCore.Wpf.UserControls.Browser;assembly=OtherSideCore.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+      <browser:BrowserDomainObjectSearchListView>
+         <browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+            <GridView>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Nom"
+                                                          SortPropertyName="DomainObjectSearchResult.Name"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.Name}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="N° de TVA" 
+                                                          SortPropertyName="DomainObjectSearchResult.VatNumber"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.VatNumber}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="Catégorie" 
+                                                          SortPropertyName="DomainObjectSearchResult.BusinessPartnerTypeName"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.BusinessPartnerTypeName}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="N° de client" 
+                                                          SortPropertyName="DomainObjectSearchResult.ClientNumber"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.ClientNumber}"/>
+
+               <osc_customcontrols:SortableGridViewColumn Width="200" Header="N° de fournisseur" 
+                                                          SortPropertyName="DomainObjectSearchResult.ProviderNumber"
+                                                          DisplayMemberBinding="{Binding DomainObjectSearchResult.ProviderNumber}"/>
+
+            </GridView>
+         </browser:BrowserDomainObjectSearchListView.BrowserDomainObjectSearchListView_GridView>
+      </browser:BrowserDomainObjectSearchListView>
+   </Grid>
+</UserControl>

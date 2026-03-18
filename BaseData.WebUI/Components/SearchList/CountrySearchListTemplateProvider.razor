@@ -1,0 +1,23 @@
+@using BaseData.Contracts
+@using BaseData.Domain.DomainObjects
+@using MudBlazor
+@using BusinessAppFramework.Application.Interfaces
+@using WebUI.Components.SearchList
+@using Search.Contracts.SearchResults
+@using BusinessAppFramework.WebUI.Components.SearchList
+
+@implements ISearchListTemplateProvider<CountrySearchResult>
+
+@inject ILocalizedStringService LocalizedStringService
+
+@code {
+    public SearchListTemplate<CountrySearchResult> Template => new()
+    {
+        DataGridColumns = @<text>
+            <PropertyColumn T="CountrySearchResult" TProperty="string" Property="x => x.Name" Title="@LocalizedStringService.Get(BaseDataContracts.Country_Name)" />
+            <PropertyColumn T="CountrySearchResult" TProperty="string" Property="x => x.Alpha2Code" Title="@LocalizedStringService.Get(BaseDataContracts.Country_Alpha2Code)" />
+            <PropertyColumn T="CountrySearchResult" TProperty="string" Property="x => x.Alpha3Code" Title="@LocalizedStringService.Get(BaseDataContracts.Country_Alpha3Code)" />
+            <PropertyColumn T="CountrySearchResult" TProperty="string" Property="x => x.NumericCode" Title="@LocalizedStringService.Get(BaseDataContracts.Country_NumericCode)" />
+        </text>
+    };
+}

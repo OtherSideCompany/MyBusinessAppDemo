@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ContainerTemplates\base.css" />
+    <None Remove="ContainerTemplates\ExternalDocumentTemplate.html" />
+    <None Remove="ContainerTemplates\invoice.css" />
+    <None Remove="ContainerTemplates\PurchaseQuoteTemplate.html" />
+    <None Remove="DocumentTemplates\PurchaseOrderTemplate.html" />
+    <None Remove="DocumentTemplates\SalesQuoteTemplate.html" />
+    <None Remove="DocumentTemplates\SalesOrderTemplate.html" />
+    <None Remove="DocumentTemplates\InvoiceTemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ContainerTemplates\base.css" />
+    <EmbeddedResource Include="ContainerTemplates\ExternalDocumentTemplate.html" />
+    <EmbeddedResource Include="ContainerTemplates\invoice.css" />
+    <EmbeddedResource Include="DocumentTemplates\PurchaseOrderTemplate.html" />
+    <EmbeddedResource Include="DocumentTemplates\PurchaseQuoteTemplate.html" />
+    <EmbeddedResource Include="DocumentTemplates\SalesQuoteTemplate.html" />
+    <EmbeddedResource Include="DocumentTemplates\SalesOrderTemplate.html" />
+    <EmbeddedResource Include="DocumentTemplates\InvoiceTemplate.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Application\BusinessAppFramework.Application.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.DocumentRendering\BusinessAppFramework.DocumentRendering.csproj" />
+    <ProjectReference Include="..\..\BusinessAppFramework\BusinessAppFramework.Domain\BusinessAppFramework.Domain.csproj" />
+    <ProjectReference Include="..\Accounts.Domain\Accounts.Domain.csproj" />
+    <ProjectReference Include="..\BaseData.Application\BaseData.Application.csproj" />
+    <ProjectReference Include="..\BaseData.Domain\BaseData.Domain.csproj" />
+    <ProjectReference Include="..\Purchases.Domain\Purchases.Domain.csproj" />
+    <ProjectReference Include="..\Invoicing.Application\Invoicing.Application.csproj" />
+    <ProjectReference Include="..\Invoicing.Contracts\Invoicing.Contracts.csproj" />
+    <ProjectReference Include="..\Invoicing.Domain\Invoicing.Domain.csproj" />
+    <ProjectReference Include="..\MyBusinessApp.Contracts\MyBusinessApp.Contracts.csproj" />
+    <ProjectReference Include="..\Sales.Domain\Sales.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

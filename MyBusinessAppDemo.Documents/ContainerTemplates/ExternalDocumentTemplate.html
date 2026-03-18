@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+   <meta charset="utf-8" />
+   {Css:base.css}
+</head>
+<body>
+   <div class="doc">
+
+      <header class="header">
+         <div class="doc-type">{{ document_type }}</div>
+      </header>
+
+      <section class="meta">
+         <table class="meta-table">
+            <tr>
+               <td class="company-name">{{ label_sender }}</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="company-name">{{ company_name }}</td>
+            </tr>
+            <tr>
+               <td>{{ company_address }}</td>
+               <td><span class="label">{{ label_phone }}</span>{{ company_phone }}</td>
+            </tr>
+            <tr>
+               <td>{{ company_postal_code }} {{ company_city }}</td>
+               <td><span class="label">{{ label_web }}</span>{{ company_web }}</td>
+            </tr>
+            <tr>
+               <td>{{ company_vat }}</td>
+            </tr>
+         </table>
+
+         <table class="meta-table">
+            <tr>
+               <td class="company-name">{{ label_recipient }}</td>
+            </tr>
+            <tr>
+               <td class="company-name">{{ partner_name }}</td>
+            </tr>
+            <tr>
+               <td>{{ partner_address }}</td>
+            </tr>
+            <tr>
+               <td>{{ partner_postal_code }} {{ partner_city }}</td>
+            </tr>
+            <tr>
+               <td>{{ partner_vat }}</td>
+            </tr>
+         </table>
+      </section>
+
+      <section class="content">
+         {Content}
+      </section>
+
+   </div>
+
+</body>
+</html>

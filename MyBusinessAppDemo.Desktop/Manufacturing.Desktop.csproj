@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\application_logo.png" />
+    <None Remove="Resources\company_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\OtherSideCore\OtherSideCore\OtherSideCore.Infrastructure\OtherSideCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\Accounts.Infrastructure\Accounts.Infrastructure.csproj" />
+    <ProjectReference Include="..\Manufacturing.Application\Manufacturing.Application.csproj" />
+    <ProjectReference Include="..\Manufacturing.Infrastructure\Manufacturing.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\application_logo.png" />
+    <Resource Include="Resources\company_logo.png" />
+  </ItemGroup>
+
+</Project>

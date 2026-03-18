@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="AccountsModuleView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchLists\BusinessPartnerSearchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BusinessPartner\BusinessPartnerEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BusinessPartner\BusinessPartnerWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\BusinessPartner\ContactListEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Contacts\ContactEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Workspaces\Contacts\ContactWorkspaceView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AccountsModuleView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchLists\BusinessPartnerSearchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BusinessPartner\BusinessPartnerEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BusinessPartner\BusinessPartnerWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\BusinessPartner\ContactListEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Contacts\ContactEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Workspaces\Contacts\ContactWorkspaceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
